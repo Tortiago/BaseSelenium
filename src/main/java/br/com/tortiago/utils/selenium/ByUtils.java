@@ -6,6 +6,8 @@ import static br.com.tortiago.constantes.ConstTagsHTML.TAG_TD;
 import static br.com.tortiago.constantes.ConstTagsHTML.TAG_TR;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Classe que efetua encapsulamento das funcoes da classe {@link By} do
@@ -336,4 +338,10 @@ public abstract class ByUtils {
 	public static By encontraByFormControlName(String elemento, String nome, int index) {
 		return By.xpath(String.format("(//%1$s[@formcontrolname='%2$s'])[%3$d]", elemento, nome, index));
 	}
+	
+	public static By encontraByAtributo(String elemento, String atributo, String valor) {
+		return By.xpath(String.format(".//%1$s[@%2$s='%3$s']", elemento, atributo, valor));
+	}
+	
+	
 }

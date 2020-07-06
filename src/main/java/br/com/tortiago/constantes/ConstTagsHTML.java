@@ -36,7 +36,9 @@ public class ConstTagsHTML {
 	 * HTML
 	 */
 	public static final String
-		ATRIBUTO_INFO = "INFO",
-		ATRIBUTO_SRC = "src";
+		ATRIBUTO_INFO 			= "INFO",
+		ATRIBUTO_SRC 			= "src",
+		ATRIBUTO_TITLE			= "title",
+		ATRIBUTO_ARIAL_LABEL 	= "aria-label";
 	
 }

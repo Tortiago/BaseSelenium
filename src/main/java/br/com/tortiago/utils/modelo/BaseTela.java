@@ -36,10 +36,10 @@ public abstract class BaseTela {
 	 * @return retorna o {@link WebDriver} instanciado no pageObject.
 	 */
 	public static WebDriver getDriver() {
-		if (driver == null) {
-			return driver = instanciaChromeDriver();
-		} else {
+		if (driver != null) {
 			return driver;
+		} else {
+			return driver = instanciaChromeDriver();
 		}
 	}
 
@@ -90,13 +90,18 @@ public abstract class BaseTela {
 	 */
 	public static void fecha() {
 		try {
-			getDriver().close();
+			if(getDriver()!=null) {
+				getDriver().close();
+			}
 		} catch (Exception e) {
 			System.out.println("Erro ao chamar o metodo close(): " + e.toString());
 		}
 
 		try {
-			getDriver().quit();
+			if(getDriver()!=null) {
+				getDriver().quit();	
+			}
+			
 		} catch (Exception e) {
 			System.out.println("Erro ao chamar o metodo quit(): " + e.toString());
 		}

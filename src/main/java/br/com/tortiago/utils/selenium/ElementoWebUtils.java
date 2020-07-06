@@ -130,6 +130,11 @@ public class ElementoWebUtils {
 			elemento.click();
 		}
 	}
+	
+	public static int elementoWebListSize(By by) {
+		List<WebElement> qtdElementos = getDriver().findElements(by);
+		return qtdElementos.size();
+	}
 
 	/**
 	 * Metodo que permite selecionar uma opcao do combobox pelo index. Seleciona o
@@ -138,7 +143,7 @@ public class ElementoWebUtils {
 	 * @param by    o identificador By do elemento a ser selecionado
 	 * @param index o indice a ser escolhido dentro do combobox
 	 */
-	public void elementoWebSelecionaListaSelect(By by, int index) {
+	public static void elementoWebSelecionaListaSelect(By by, int index) {
 		try {
 			Select listaSelect = new Select(elementoWebAchaElementoClicavel(by));
 			listaSelect.selectByIndex(index);
@@ -154,7 +159,7 @@ public class ElementoWebUtils {
 	 * @param by    o identificador By do elemento a ser selecionado
 	 * @param texto o texto a ser escolhido dentro do combobox
 	 */
-	public void elementoWebSelecionaListaSelect(By by, String texto) {
+	public static void elementoWebSelecionaListaSelect(By by, String texto) {
 		try {
 			Select listaSelect = new Select(elementoWebAchaElementoClicavel(by));
 			listaSelect.selectByVisibleText(texto);
@@ -163,6 +168,15 @@ public class ElementoWebUtils {
 		}
 	}
 
+	public static void elementoWebSelecionaListaSelectByValue(By by, String value) {
+		try {
+			Select listaSelect = new Select(elementoWebAchaElementoClicavel(by));
+			listaSelect.selectByValue(value);
+		} catch (Exception ex) {
+			System.out.println("Erro ao selecionar opcao por texto.");
+		}
+	}
+	
 	/**
 	 * Metodo que permite selecionar uma opcao do combobox pelo texto. Seleciona o
 	 * texto da lista com um clique.
@@ -289,7 +303,7 @@ public class ElementoWebUtils {
 	 * @param by o identificador By do elemento a ser selecionado
 	 * @return boolean que identifica se o objeto esta visivel ou nao
 	 */
-	public boolean elementoWebEstaVisivel(By by) {
+	public static boolean elementoWebEstaVisivel(By by) {
 		try {
 			return getDriver().findElement(by).isDisplayed();
 		} catch (NoSuchElementException ex) {
@@ -299,7 +313,6 @@ public class ElementoWebUtils {
 			System.out.println("Elemento nao visivel (StaleElementReferenceException).");
 			return false;
 		} catch (Exception ex) {
-			System.out.println("Elemento nao visivel " + ex.getMessage());
 			return false;
 		}
 	}
@@ -378,7 +391,7 @@ public class ElementoWebUtils {
 	 * @return String do texto contido no WebElement encontrado atraves do parametro
 	 *         By
 	 */
-	public String elementoWebPegaTexto(By by) {
+	public static String elementoWebPegaTexto(By by) {
 		return elementoWebAchaElementoClicavel(by).getText();
 	}
 
@@ -451,6 +464,7 @@ public class ElementoWebUtils {
 			}
 		}
 	}
+	
 
 	/**
 	 * Metodo que permite a selecao de uma data em um objeto datepicker.
@@ -532,4 +546,5 @@ public class ElementoWebUtils {
 
 		}
 	}
+	
 }
